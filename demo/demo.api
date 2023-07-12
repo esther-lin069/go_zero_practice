@@ -18,6 +18,15 @@ type SignUpResponse {
 	Message string `json:"message"`
 }
 
+type LoginRequest {
+	Name     string `json:"name"`
+	Password string `json:"password"`
+}
+
+type LoginResponse {
+	Token string `json:"token"`
+}
+
 service demo-api {
 	@handler DemoHandler
 	get /from/:name(Request) returns (Response)
@@ -26,4 +35,7 @@ service demo-api {
 service demo-api {
 	@handler UserSignUpHandler
 	post /user/sign-up(SignUpRequest) returns (SignUpResponse)
+
+	@handler UserLoginHandler
+	post /user/login(LoginRequest) returns (LoginResponse)
 }

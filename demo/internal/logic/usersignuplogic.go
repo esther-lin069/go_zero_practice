@@ -7,7 +7,7 @@ import (
 
 	"go_zero/demo/demo/internal/svc"
 	"go_zero/demo/demo/internal/types"
-	"go_zero/demo/demo/model/mysql"
+	usermodel "go_zero/demo/demo/model/user"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -27,7 +27,7 @@ func NewUserSignUpLogic(ctx context.Context, svcCtx *svc.ServiceContext) *UserSi
 }
 
 func (l *UserSignUpLogic) UserSignUp(req *types.SignUpRequest) (resp *types.SignUpResponse, err error) {
-	_, err = l.svcCtx.UserModel.Insert(l.ctx, &mysql.User{
+	_, err = l.svcCtx.UserModel.Insert(l.ctx, &usermodel.User{
 		Name: sql.NullString{
 			String: req.Name,
 			Valid:  true,
@@ -41,8 +41,6 @@ func (l *UserSignUpLogic) UserSignUp(req *types.SignUpRequest) (resp *types.Sign
 	resp = &types.SignUpResponse{
 		Message: fmt.Sprintf("Name: %s Added", req.Name),
 	}
-
-	return
 
 	return
 }

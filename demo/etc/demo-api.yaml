@@ -5,3 +5,8 @@ Port: 8888
 # DB
 DB:
   DsnString: root:notSecureChangeMe@tcp(127.0.0.1:3306)/Demo?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+# Redis
+Redis:
+  Host: "127.0.0.1:6379"
+  Pass: ""
