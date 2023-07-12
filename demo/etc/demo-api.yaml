@@ -1,0 +1,7 @@
+Name: demo-api
+Host: 0.0.0.0
+Port: 8888
+
+# DB
+DB:
+  DsnString: root:notSecureChangeMe@tcp(127.0.0.1:3306)/Demo?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai

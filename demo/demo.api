@@ -1,0 +1,29 @@
+type Request {
+	Name string `path:"name,options=you|me"`
+}
+
+type Response {
+	Message string `json:"message"`
+}
+
+type SignUpRequest {
+	Name     string `json:"name"`
+	Password string `json:"password"`
+	Mobile   string `json:"mobile,optional"`
+	Gender   string `json:"gender,options=M|F"`
+	Nickname string `json:"nickname"`
+}
+
+type SignUpResponse {
+	Message string `json:"message"`
+}
+
+service demo-api {
+	@handler DemoHandler
+	get /from/:name(Request) returns (Response)
+}
+
+service demo-api {
+	@handler UserSignUpHandler
+	post /user/sign-up(SignUpRequest) returns (SignUpResponse)
+}
