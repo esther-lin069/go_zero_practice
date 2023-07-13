@@ -3,28 +3,28 @@ package logic
 import (
 	"context"
 
-	"go_zero/demo/bookstore/internal/svc"
-	"go_zero/demo/bookstore/internal/types"
+	"go_zero/demo/bookstore/rpc/check/check"
+	"go_zero/demo/bookstore/rpc/check/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type CheckLogic struct {
-	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
+	logx.Logger
 }
 
 func NewCheckLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CheckLogic {
 	return &CheckLogic{
-		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
+		Logger: logx.WithContext(ctx),
 	}
 }
 
-func (l *CheckLogic) Check(req *types.CheckReq) (resp *types.CheckResp, err error) {
+func (l *CheckLogic) Check(in *check.CheckReq) (*check.CheckResp, error) {
 	// todo: add your logic here and delete this line
 
-	return
+	return &check.CheckResp{}, nil
 }
