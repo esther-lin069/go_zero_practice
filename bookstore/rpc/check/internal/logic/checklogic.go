@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"errors"
 
 	"go_zero/demo/bookstore/rpc/check/check"
 	"go_zero/demo/bookstore/rpc/check/internal/svc"
@@ -24,7 +25,9 @@ func NewCheckLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CheckLogic 
 }
 
 func (l *CheckLogic) Check(in *check.CheckReq) (*check.CheckResp, error) {
-	// todo: add your logic here and delete this line
+	if in.Book == "NaN" {
+		return nil, errors.New("not found")
+	}
 
 	return &check.CheckResp{}, nil
 }

@@ -6,6 +6,7 @@ import (
 	"go_zero/demo/bookstore/api/internal/logic"
 	"go_zero/demo/bookstore/api/internal/svc"
 	"go_zero/demo/bookstore/api/internal/types"
+	pkg "go_zero/demo/pkg"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
@@ -21,9 +22,9 @@ func CheckHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		l := logic.NewCheckLogic(r.Context(), svcCtx)
 		resp, err := l.Check(&req)
 		if err != nil {
-			httpx.ErrorCtx(r.Context(), w, err)
+			pkg.Response(w, nil, err)
 		} else {
-			httpx.OkJsonCtx(r.Context(), w, resp)
+			pkg.Response(w, resp, nil)
 		}
 	}
 }
