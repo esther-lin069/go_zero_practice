@@ -1,0 +1,54 @@
+// 文件使用go-zero 第一個版本語法
+syntax = "v1"
+
+// 描述API基本資訊(可以不用)
+info(
+	title: "type title here"
+	desc: "type desc here"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
+)
+
+// 引入其他api文件
+//import ""
+
+// 聲明type
+type (
+	LoginReq {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+	LoginResp {
+		AccessToken string `json:"accessToken"`
+	}
+	RegisterReq {
+		Username string `json:"username"`
+		Password string `json:"password"`
+		Mobile   string `json:"mobile"`
+		Gender   string `json:"gender,options=male|female|unknown"`
+		Nickname string `json:"nickname"`
+	}
+	RegisterResp {
+		Result string `json:"result"`
+	}
+)
+
+@server (
+	// 路由前綴
+	prefix : /user
+	// 路由分組
+	group : group1
+)
+
+// 定義 HTTP service
+// 微服務名稱，底下的目錄名稱和配置文件將以 user 為名
+service user{
+	@doc "登入"
+	@handler LoginHandler
+	post /login(LoginReq) returns (LoginResp)
+
+	@doc "註冊"
+	@handler RegisterHandler
+	post /register(RegisterReq) returns (RegisterResp)
+}

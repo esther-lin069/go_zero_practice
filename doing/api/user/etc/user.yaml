@@ -1,0 +1,17 @@
+Name: user
+Host: 0.0.0.0
+Port: 8888
+
+# user rpc 設定
+UserRpcConf:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: userctl.rpc # 與 userctl.yaml 中的 Key 相符
+
+# tracing
+Telemetry:
+  Name: user
+  Endpoint: http://127.0.0.1:14268/api/traces
+  Batcher: jaeger
+  Sampler: 1.0

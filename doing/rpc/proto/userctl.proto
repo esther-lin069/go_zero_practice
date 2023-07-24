@@ -1,0 +1,40 @@
+// 聲明 proto 語法版本，固定值
+syntax = "proto3";
+
+package pb;
+
+// 生成 golang package名稱
+option go_package = "./pb";
+
+// 定義請求
+message LoginReq{
+  string Username = 1;
+  string Password = 2; 
+}
+
+// 定義響應
+message LoginResp{
+  string Nickname = 1;
+}
+
+// 定義請求
+message RegisterReq {
+  string Username = 1;
+  string Password = 2; 
+  string Mobile = 3;
+  string Gender = 4;
+  string Nickname = 5;
+}
+
+// 定義響應
+message RegisterResp {
+  string Result = 1;
+}
+
+// 定義服務 > 定義 rpc 方法，請求和回傳必填
+service UserCtl {
+  // Login rpc Logic
+  rpc Login(LoginReq) returns (LoginResp);
+  // Register rpc Logic
+  rpc Register(RegisterReq) returns (RegisterResp);
+}

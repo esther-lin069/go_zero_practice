@@ -1,0 +1,17 @@
+Name: userctl.rpc
+ListenOn: 0.0.0.0:8089
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: userctl.rpc
+
+# 開發模式，設定可用 grpcurl 測試
+Mode: dev
+
+# DB
+DB:
+  Dsn: root:notSecureChangeMe@tcp(127.0.0.1:3306)/Demo?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+# Cache
+Cache:
+  - Host: "127.0.0.1:6379" # 前面有 - 是陣列的意思
