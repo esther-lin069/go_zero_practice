@@ -105,7 +105,7 @@ grpcurl -plaintext 0.0.0.0:8089 list
 ```
 
 ### etcd
-預設透過 etcd 做群集管理，需要預先起一個 etcd 服務在本地，詳見 docker > etcd 提供的 docker-composer 腳本。
+預設透過 etcd 做群集管理，需要預先起一個 etcd 服務在本地，詳見 docker > etcd 提供的 docker-compose 腳本。
 
 ### 修改 API Gateway 來調用 rpc 服務
 `api/user/etc/user.yaml`
